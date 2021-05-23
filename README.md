@@ -1,27 +1,5 @@
 #README
-UPDATED: 25-04-2021 (IST)
-
-Folder structure:
-	| dist\
-	|	|linux\
-	|		|av_scanner [linux elf(64bit)]
-	|	|windows\
-	|		|av_scanner.exe [windows exe(64bit)]
-	|	|setups\ Contains setups for windows and linux
-	| src\
-	|	|requirements.txt (install for development)
-	|	|gui\ (contains all graphical elements)
-	|	|av_scanner.py (handles the core interface with the graphical user interface)
-	|	|core.py (core of the application)
-	|	|scan.db (sqlite3 database)
-	|
-	| Screenshots\
-	|	(Contains Screenshots of the Programs being Tested on various OS)
-	|
-	| test_scan\
-	|	This directory contains some malwares that has beeen
-	|	Added to the scan.db you can scan this directory for testing
-	| 	(SEE END FOR LIST OF PRE ADDED DEFINITIONS)
+UPDATED: 23-05-2021 (IST)
 
 Dependencies:
 	Python3.7>above
