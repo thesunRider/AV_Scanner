@@ -46,9 +46,11 @@ def run_cmd(argv):
 		elif opt in ("-i", "--ifile"):
 			inputfile = arg
 			jsd = json.loads(open(inputfile,"r").read())
+			logging.debug("Starting Periodic Scan with input params")
 			set_scan(jsd)
 			sys.exit()
 		elif opt in ("-a","--full_scan"):
+			logging.debug("Starting Full System Scan")
 			full_scan()
 			sys.exit()
 

@@ -1,11 +1,13 @@
 import os,zipfile,io,sys,re,sqlite3
 import hashlib,datetime,psutil,time,math,logging
 from queue import Queue
-logging.basicConfig(filename='info.log', encoding='utf-8', level=logging.DEBUG)
+logging.basicConfig(filename='scan.log', encoding='utf-8', level=logging.DEBUG)
 
 def listpartitions():
+	logging.info('Listing Partitions')
 	drps = psutil.disk_partitions()
 	drives = [(dp.device,dp.mountpoint) for dp in drps if dp.fstype == 'NTFS' or dp.fstype == 'ext4' or dp.fstype == 'FAT32']
+	logging.debug('Found '+str(len(drives))+' Usable Partitions')
 	return drives
 
 
@@ -47,22 +49,28 @@ def walk(directory,q,window = ''):
 				if proc['info'] == "scan_start":
 					scn_type = proc['data']['type']
 					print("Started scanning....")
+					logging.debug('Starting Scan of :'+ str(directory))
 
 				elif proc['info'] == "scan_pause":
 					print("Scan Paused..")
+					logging.debug('Scan Paused for :'+ str(directory))
+
 					while True:
 						curfew = q.get()
 						if curfew['info'] =='scan_resume':
 							print("Scan Resuming...")
+							logging.debug('Resuming Scan for :'+ str(directory))
 							break
 						elif curfew['info'] == "scan_stop":
 							print("Scan terminated...")
+							logging.debug('Scan Terminated :'+ str(directory))
 							return
 
 						time.sleep(100)
 
 				elif proc['info'] == "scan_stop":
 					print("Scan terminated...")
+					logging.debug('Scan Terminated :'+ str(directory))
 					return
 
 
@@ -90,6 +98,9 @@ def walk(directory,q,window = ''):
 	sql = 'INSERT INTO Scan_Reports(ScanID,ScanDate,ScanType,ScanLocation,TimeStart,TimeEnd,NumberScanned,NumberInfected) VALUES(?,?,?,?,?,?,?,?)'
 	cursor.execute(sql,(scan_id,scn_dte,scn_type,directory,dtime,etime,str(files_count),str(vuln_count),))
 	connection.commit()
+
+
+	logging.info('Scan Finished :'+ str(directory))
 	
 	if window:
 		window.evaluate_js("""
@@ -106,6 +117,7 @@ def walk(directory,q,window = ''):
 def checkifmalicious(filename,cursor):
 	rows = cursor.execute("SELECT * FROM InfectedFiles WHERE Filename = ?",(filename,)).fetchall()
 	if (len(rows) > 0):
+		logging.info('Found Virus :'+ str(filename))
 		return True
 
 	return False
