@@ -1,0 +1,302 @@
+@font-face {
+  font-family: FontAwesome5Free-Solid;
+  src: url(f5solid.otf);
+}
+
+@font-face {
+  font-family: Font Awesome 5 Free;
+  src: url(f5reg.otf);
+}
+
+@font-face {
+  font-family: Josefin Sans;
+  src: url(JosefinSans-Regular.ttf);
+}
+
+
+@font-face {
+  font-family: FontAwesome5Free-Regular;
+  src: url(f5reg.otf);
+}
+
+@font-face {
+  font-family: Nunito-Bold;
+  src: url(Nunito-Bold.ttf);
+}
+
+@font-face {
+  font-family: Nunito-Regular;
+  src: url(Nunito-Regular.ttf);
+}
+
+@font-face {
+  font-family: Nunito-Black;
+  src: url(Nunito-Black.ttf);
+}
+
+body{
+	overflow: hidden;
+	margin-top: -10px !important;
+}
+
+
+
+.btn {
+	border: none;
+	font-family: Nunito-Regular;
+	font-size: inherit;
+	color: inherit;
+	background: none;
+	cursor: pointer;
+	padding: 15px 80px;
+	display: inline-block;
+	margin: 15px 30px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 700;
+	outline: none;
+	position: relative;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.btn:after {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+/* Button 1 */
+.btn-1 {
+	border: 3px solid #fff;
+	color: #fff;
+}
+
+/* Button 1a */
+.btn-1a:hover,
+.btn-1a:active {
+	color: #0e83cd;
+	background: #fff;
+}
+
+
+.btnicon{
+	fill: white;
+	width: 100px;
+	height: 100px;
+}
+
+#logo_section{
+	position: relative;
+	top: 36.239px;
+	height: 150px;
+}
+
+#back_btn{
+	left: 75px;
+	top: 20px;
+	position: absolute;
+	overflow: visible;
+	width: 172px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Nunito-Regular;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 13px;
+	color: rgba(255,255,255,1);
+	display: flex;
+	align-items: center;
+}
+
+#back_btn:hover{
+	transform: scale(1.03);
+	transition: 0.3s;
+}
+
+
+#back_icn{
+	fill: white;
+	width: 200px;
+	height: 30px;
+}
+
+#dashboard{
+	position: absolute;
+	width: 772px;
+	height: 566px;
+	background: linear-gradient(180deg, rgba(9,95,155,1) 0%, rgba(1,21,34,1) 100%);
+	overflow: hidden;
+	top: 0px;
+	left: 0px;
+	z-index: -100;
+}
+
+
+
+#guard_logo{
+	position: relative;
+	width: 53.854px;
+	height: 78.761px;
+	left: 34.146px;
+	top: 30px;
+	fill: white;
+}
+
+#guard_logo_writeup{
+	left: 110px;
+	top: -35px;
+	position: relative;
+	overflow: visible;
+	width: 348px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Josefin Sans;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 25px;
+	color: rgba(255,255,255,1);
+}
+
+
+.btn:hover > .btnicon {
+	fill: #0e83cd;
+}
+
+
+.close_container
+{
+  position: relative;
+  width: 2em;
+  height: 2em;
+  overflow: hidden;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 22px;
+  left: 51%;
+  top: 8px;
+  font-family: sans-serif !important;
+  -webkit-box-sizing: unset !important;
+  -moz-box-sizing: unset !important;
+  box-sizing: unset !important;
+
+}
+.close_container:before
+{
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 0;
+  width: 0;
+  border-radius: 6em;
+  transition: all 0.2s ease-in-out;
+}
+
+#search_btn {
+		position: relative;
+		top: 10px;
+		left: -10px;
+		overflow: visible;
+		width: 30px;
+		fill: white;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Font Awesome 5 Free;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 28px;
+		color: rgba(255,255,255,1);
+	}
+
+.close_icon
+{
+  transition: all 0.075s ease-in-out;
+  position: absolute;
+  width: 1em;
+  height: 1em;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  border: 0.1em solid;
+  border-color: rgba(250,250,250,0.8);
+  border-radius: 6em;
+    font-family: sans-serif !important;
+  -webkit-box-sizing: unset !important;
+  -moz-box-sizing: unset !important;
+  box-sizing: unset !important;
+  /*background: rgba(255,255,255,0.8);*/
+}
+.close_icon:after
+{
+  transition: all 0.075s ease-in-out;
+  font: 1em Helvetica, arial;
+  font-size: 1em;
+  width: 100%;
+  height: 100%;
+  content:"x";
+  color: rgba(250,250,250,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(1.25,1);
+}
+/*END normal close button Classes*/
+/*BEGIN First Close button Zoom and Shrink animations*/
+
+.close_container.zoom_shrink:hover .close_icon.zoom_shrink
+{
+  font-size: 1.2em;
+}
+
+.close_container.zoom_shrink:active:before
+{
+  border-color: rgba(200,100,100,0.8);
+}
+.close_container.zoom_shrink:active .close_icon.zoom_shrink
+{
+  font-size: 0.75em;
+  border-color: rgba(50,50,50,0.8);
+}
+.close_container.zoom_shrink:active .close_icon.zoom_shrink:after
+{
+  color: rgba(50,50,50,0.8);
+}
+
+header{
+	position: relative;
+	left: -10%;
+	margin-top: 0px;
+	width: 200%;
+	border: 0.1em solid;
+	border-color: white;
+	padding: 3px;
+}
+
+.minimize_container{
+	position: relative;
+	top: -20px;
+	left: 49%;
+	font-size: 64px;
+	color: white;
+	width: 40px;
+	height: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	  font-family: sans-serif !important;
+  -webkit-box-sizing: unset !important;
+  -moz-box-sizing: unset !important;
+  box-sizing: unset !important;
+}
+
+.minimize_container:hover {
+	-webkit-transition: all 0.1s;
+	-moz-transition: all 0.1s;
+	font-size: 69px;
+}

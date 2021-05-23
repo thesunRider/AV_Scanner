@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JVSOFT_MALWARE_DETECTOR</title>
+</head>
+<link rel="stylesheet" href="tablesaw.css">
+<!-- load your own jQuery -->
+
+ <script src="jquery.js"></script>
+<script src="tablesaw.js"></script>
+<script src="tablesaw-init.js"></script>
+<style type="text/css">
+	body{
+		height: 500px;
+		width: 600px;
+		overflow: hidden;
+
+		background: linear-gradient(180deg, rgba(9,95,155,1) 0%, rgba(1,21,34,1) 100%);
+	}
+
+</style>
+
+<body>
+<div id="uppart" class="pywebview-drag-region" style="padding: 20px;border: 0.1em;border-color: white;color: white;font-size: 22px;font-family: Nunito-Regular;">Infected Files
+
+  <div id="close_list" style="font-family: Nunito-Regular;font-size: 20px;color: white;position: absolute;left: 90%;top: 10px;z-index: 1000;">X</div>
+</div>
+
+<div style="overflow: auto;height: 75%;width: 95%;">
+<table class="tablesaw tablesaw-swipe" data-tablesaw-mode="swipe" data-tablesaw-minimap>
+			<thead>
+				<tr>
+					<th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="persist" style="color: white;" style="width: 200px;" class="tablesaw-swipe-cellpersist">File Name</th>
+					<th scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-priority="4" style="color: white;" style="width: 200px;">Directory</th>
+					<th scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-priority="3" style="color: white;" style="width: 200px;">Date</th>
+					<th scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-priority="2" style="color: white;" style="width: 200px;">Scan Type</th>		
+					<th scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-priority="1" style="color: white;" style="width: 200px;">Scan Location</th>
+				</tr>
+			</thead>
+			<tbody id="file_tab" style="color: white;">
+			</tbody>
+		</table>
+</div>
+
+</body>
+<script type="text/javascript">
+		window.addEventListener('pywebviewready', function() {
+            pywebview.api.queryscan_full().then(function(response) {
+            	console.log(response);
+            	document.getElementById("file_tab").innerHTML = "";
+            	for (var i = 0; i < response.list.length; i++) {
+            		
+            		document.getElementById("file_tab").insertAdjacentHTML("afterbegin", `<tr>
+            		<td class="title tablesaw-swipe-cellpersist" style="width: 200px;">`+response.list[i]['name'][1]+`</td>
+					<td style="width: 200px;">`+response.list[i].name[0]+`</td>
+					<td style="width: 200px;">`+response.list[i].date+`</td>
+					<td style="width: 200px;">`+response.list[i].type+`</td>
+					<td style="width: 200px;">`+response.list[i].loc+`</td></tr>`);
+            	}
+            	
+            });
+        });
+        document.getElementById("close_list").addEventListener("click", function(){pywebview.api.close();});
+</script>
+</html>

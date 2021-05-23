@@ -1,0 +1,4 @@
+pyinstaller
+py2app
+pywebview
+pywebview

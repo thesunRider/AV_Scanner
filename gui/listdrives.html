@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>List Drives</title>
+</head>
+    <link rel="stylesheet" href="style_table.css" />
+    <link rel="stylesheet" href="tables.css"/>
+
+        <link
+      rel="stylesheet"
+      href="font-awesome.min.css"
+    />
+<style type="text/css">
+  body{
+    width: 537px;
+    height: 413px;
+    background:  #053e66;
+    overflow: hidden
+  }
+</style>
+    
+<body>
+  <div id="close_list" style="font-family: Lato;font-size: 20px;color: white;position: absolute;left: 90%;padding: 10px;z-index: 1000;">X</div>
+<div class="pywebview-drag-region" style="font-family: Lato;font-size: 22px;color: white;position: relative;top: 20px;left: 30px;">Please Select a Drive</div>
+<div class="main__container" id="main_cont">
+  <div class="connection do-nicescroll" id="datatable" style="overflow: auto; outline: currentcolor none medium;" tabindex="1">
+</div>
+
+
+<div style="display:flex;">
+     <button id="close_list2" class="btn btn-1 btn-1a" style="width:200px;margin-top: 5% !important;" type="button">
+      Close
+    </button>
+  </div>
+</body>
+    <script src="874986f905.js"></script>
+    <script src="jquery.js"></script>
+    <script src="jquery.nicescroll.min.js"></script>
+
+    <script>
+      var mounts = [];
+      var selecmount = 0;
+
+
+
+      function addClass(element, classString) {
+    element.className = element
+        .className
+        .split(' ')
+        .filter(function (name) { return name !== classString; })
+        .concat(classString)
+        .join(' ');
+}
+
+function removeClass(element, classString) {
+    element.className = element
+        .className
+        .split(' ')
+        .filter(function (name) { return name !== classString; })
+        .join(' ');
+}
+
+function hasClass(ele,cls) {
+  return !!ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
+}
+
+function toggleClass(element,classString){
+  if(hasClass(element,classString)){
+      removeClass(element,classString);
+  }else{
+    addClass(element,classString);
+  }
+}
+
+      function registertog(mount_rec){
+        pywebview.api.driveselected(mounts[mount_rec-1]);
+        //switchelse(mount);
+      }
+
+      $(".connectedDevice").click(function() {  
+        var listItems = $(".connectedDevice"); 
+        for (let i = 0; i < listItems.length; i++) {
+
+            listItems[i].removeClass("activeDevice"); 
+        } 
+        this.addclass("activeDevice"); 
+      });
+           window.addEventListener('pywebviewready', function() {
+            pywebview.api.querydrives().then(function(response) {
+              console.log(JSON.stringify(response));
+              strcon = '';
+              document.getElementById("datatable").innerHTML = "";
+              mounts=[];
+               for (var i = response.list.length - 1; i >= 0; i--) {
+                 drv = response.list[i].drive;
+                 mount = response.list[i].mount;
+                 mounts.push(mount);
+                  strcon = `<a href="#" id="gm`+mounts.length+`" class="connectedDevice" onclick="registertog('`+mounts.length+`')">
+                    <i class="fal fa-desktop"></i>
+                    <p>`+ drv+`</p>
+                    <p>Mount: `+response.list[i].mount+`</p>
+                    </a>`;
+
+                document.getElementById("datatable").insertAdjacentHTML('afterbegin',strcon);               
+               }
+
+                
+            });
+
+        document.getElementById("close_list").addEventListener("click", function(){pywebview.api.close_listdrv();});
+         document.getElementById("close_list2").addEventListener("click", function(){pywebview.api.close_listdrv();});
+         
+        });
+        
+            $(function() {  
+        $(".do-nicescroll").niceScroll();
+      });
+    </script>
+</html>

@@ -1,0 +1,6 @@
+dependencies.txt
+launchjvsoft.xml
+MicrosoftEdgeWebView2RuntimeInstallerX64.exe
+MicrosoftEdgeWebView2RuntimeInstallerX86.exe
+VC_redist.x64.exe
+VC_redist.x86.exe

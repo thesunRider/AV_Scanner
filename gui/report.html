@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JVSOFT_MALWARE_DETECTOR</title>
+</head>
+
+
+<link rel="stylesheet" type="text/css" href="style.css">
+ <script src="jquery.js"></script>
+<script src="bootstrap.js"></script>
+
+<script src="sweetalert.min.js"></script>
+<link rel="stylesheet" href="bootstrap.css">
+
+<style type="text/css">
+
+#current_page{
+	position: relative;
+	left: 560px;
+	top: -110px;
+
+	color: white;
+}
+
+#home {
+		position: relative;
+		top: 0px;
+		left: 10px;
+		overflow: visible;
+		width: 44px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Font Awesome 5 Free;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 48px;
+		color: rgba(255,255,255,1);
+	}
+
+#current_indx{
+	position: relative;
+	font-family: Nunito-Regular;
+	font-size: 25px;
+	top:10px;
+	left: -20px;
+}
+
+#logo_section{
+	position: relative;
+	top: 36.239px;
+}
+
+
+#content_section{
+	top: 100px;
+	position: relative;
+}
+
+
+
+.dropdown-menu {
+   width: 100%;
+}
+
+.scrollable-menu {
+      height: auto;
+      max-height: 200px;
+      overflow-x: hidden;
+}
+
+
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
+    color: #fdfdfd;
+    background-color: #043353;
+    border-color: #adadad;
+}
+
+
+.btn-default {
+    color: #f9f9f9;
+    background-color: #06436e;
+    border-color: #ccc;
+}
+
+.dropdown-menu {
+background-color: #01375b;
+}
+
+
+.dropdown-menu > li > a {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: normal;
+    line-height: 1.42857143;
+    color: #fdfdfd;
+    white-space: nowrap;
+}
+
+.container{
+	position: relative;
+	left:60px;
+	top: -60px;
+}
+body{
+	line-height: 1.2 !important;
+}
+
+
+.rad1{
+	position: relative;
+	left: 250px;
+	top: 0px;
+}
+
+.rad2{
+	position: relative;
+	left: 301px;
+}
+
+.rect_radius{
+	border:1em;
+	border-color: white;
+	background: white;
+	color: blue;
+	display: inline-block;
+	width: max-content;
+	height: max-content;
+	align-items: center;
+	justify-content: center;
+	border-radius: 25px;
+	font-family: Nunito-Bold;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 35px;
+	color: rgba(8,93,152,1);
+	padding: 15px;
+	justify-content: center;
+	align-items: center;
+}
+
+#defn{
+	position: relative;
+	top: 70px;
+	left: 150px;
+	font-size: 24px;
+	font-family: Nunito-Regular;
+}
+.btn_shwfiles{
+position: relative;
+left: 480px;
+top: -110px;
+}
+
+</style>
+
+<body>
+	<header class="pywebview-drag-region">
+		<div id="back_btn" onclick="location.href='home.html'">
+		<svg id="back_icn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
+				<path  d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"></path>
+			</svg>
+		Back to Dashboard</div>
+		<div id="close" class="close_container zoom_shrink"><div class="close_icon zoom_shrink"></div></div>
+		<div id="minimize" class="minimize_container" >-</div>
+</header>
+
+
+	<div id="dashboard">
+		<div id="logo_section">
+			<div id="guard_logo">
+				<svg class="Path_3" viewBox="3 1 63.854 78.761">
+					<path id="Path_3" d="M 34.92709732055664 1 L 2.999998807907104 15.32019424438477 L 2.999998807907104 36.80047607421875 C 2.999998807907104 56.66975784301758 16.62223243713379 75.25021362304688 34.92709732055664 79.76107788085938 C 53.23197174072266 75.25021362304688 66.85419464111328 56.66975784301758 66.85419464111328 36.80047607421875 L 66.85419464111328 15.32019424438477 L 34.92709732055664 1 Z M 27.83219146728516 58.28079223632813 L 13.64236545562744 43.96058654785156 L 18.64427947998047 38.9127082824707 L 27.83219146728516 48.14924240112305 L 51.20992279052734 24.55671501159668 L 56.21184158325195 29.640380859375 L 27.83219146728516 58.28079223632813 Z">
+					</path>
+				</svg>
+			</div>
+
+			<div id="guard_logo_writeup">
+				<span>JVSOFT<br>MALWARE DETECTOR</span>
+			</div>
+			<div id="current_page"> 
+				<span id="current_indx">Reports</span>
+				<svg id="search_btn" class="Path_6" viewBox="6 6 57.838 59.078" style="width: 40px;">
+					<path id="Path_6" d="M 57.41113662719727 6.000000953674316 L 12.42639255523682 6.000000953674316 C 8.875809669494629 6.000000953674316 5.999999046325684 8.937504768371582 5.999999046325684 12.5642557144165 L 5.999999046325684 58.51404571533203 C 5.999999046325684 62.14079666137695 8.875809669494629 65.07830047607422 12.42639255523682 65.07830047607422 L 57.41113662719727 65.07830047607422 C 60.96171569824219 65.07830047607422 63.8375244140625 62.14079666137695 63.8375244140625 58.51404571533203 L 63.8375244140625 12.5642557144165 C 63.8375244140625 8.937504768371582 60.96171569824219 6.000000953674316 57.41113662719727 6.000000953674316 Z M 25.27917671203613 51.94978332519531 L 18.85278129577637 51.94978332519531 L 18.85278129577637 28.97489547729492 L 25.27917671203613 28.97489547729492 L 25.27917671203613 51.94978332519531 Z M 38.13196563720703 51.94978332519531 L 31.70556640625 51.94978332519531 L 31.70556640625 19.12851333618164 L 38.13196563720703 19.12851333618164 L 38.13196563720703 51.94978332519531 Z M 50.98474502563477 51.94978332519531 L 44.55835342407227 51.94978332519531 L 44.55835342407227 38.82127380371094 L 50.98474502563477 38.82127380371094 L 50.98474502563477 51.94978332519531 Z">
+					</path>
+				</svg>
+			</div>
+		</div>
+
+		<div id="content_section">
+			
+			<div class="container">
+			    <div class="row">
+			      <div class="col mt-4">
+			        <div class="btn-group">
+			          <button id="date_val" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+			            Select Date <span class="caret"></span>
+			          </button>
+			          <ul class="dropdown-menu scrollable-menu" role="menu" id="drop_dates">
+			          	<li><a onclick="getdata('tod');" id="tod">Today</a></li>
+			          	<li><a onclick="getdata('lwk');" id="lwk">Last Week</a></li>
+			          	<li><a onclick="getdata('lmo');" id="lmo">Last Month</a></li>
+			          	<li><a onclick="getdata('lyr');" id="lyr">Last Year</a></li>
+			          	<li><a onclick="getdata('alt');" id="alt">All Time</a></li>
+
+			          </ul>
+					        </div>
+					    </div>
+					</div>
+
+			</div>
+
+			<button id='shw_inf' class="btn btn-1 btn-1a btn_shwfiles" type="button" style="visibility: hidden;">Show Infected Files</button>
+		<div style="position: relative;top: -80px;">
+			<div class="rect_radius rad1" style="justify-content: center;">
+				<div id="cur_filescan">None</div>
+			 	<div style="font-size: 20px;">Files Scanned</div>
+			 </div>
+
+			<div class="rect_radius rad2">
+				<div style="color: red" id="cur_malware">None</div> 
+				<div style="font-size: 20px;">Malware Found</div>
+			</div>
+
+			<div id="defn" style="color: white;align-items: center;justify-content: center;align-content: right">
+				<div id="defn1" style="display: flex;"><div id="total_mal" style="font-size: 29px;">35,3780 </div><div style="font-size:20px;padding-left: 50px">Total Malware Since First Scan</div> </div>
+				<div id="defn2" style="display: flex;"><div id="total_def" style="font-size: 29px;">23123,2131,233</div> <div style="font-size: 20px;padding-left: 50px;">Virus Definitions in Database</div></div>
+			</div>
+		</div>
+		</div>
+
+	</div>
+
+</body>
+
+<script type="text/javascript" src="script.js"></script>
+<script type="text/javascript">
+	function setdata(date,id){
+		console.log(id);
+		console.log(date);
+		console.log("date_set");
+
+		document.getElementById("date_val").value = id;
+		document.getElementById("date_val").innerHTML = date;
+		document.getElementById("shw_inf").style.visibility = "visible";
+		pywebview.api.getscan_data(id).then(function(response){
+			//console.log(response.files);
+			//console.log(response.sum);
+			console.log("got stuff");
+
+			document.getElementById("cur_filescan").innerHTML = response.nscan;
+			document.getElementById("cur_malware").innerHTML = response.ninf;
+		});
+	}
+
+	function getdata(cmd){
+		pywebview.api.fetcha_dates(cmd).then(function(response){
+			console.log("Fetching new");
+			console.log(JSON.stringify(response));
+			document.getElementById("date_val").value = cmd;
+			document.getElementById("date_val").innerHTML = document.getElementById(cmd).innerHTML;
+			document.getElementById("shw_inf").style.visibility = "visible";
+
+			document.getElementById("cur_filescan").innerHTML = response.nscan;
+			document.getElementById("cur_malware").innerHTML = response.ninf;
+
+		});
+	}
+
+	window.addEventListener('pywebviewready', function() {
+		console.log("readypywebview");
+        document.getElementById("shw_inf").addEventListener("click", function(){pywebview.api.showinfected(document.getElementById("date_val").value);});
+
+        pywebview.api.getstat_data().then(function(response){
+         	console.log('stat_data_start');
+         	console.log(JSON.stringify(response));
+         	console.log('stat_data_end');
+         	document.getElementById("total_def").innerHTML = response.files;
+         	document.getElementById("total_mal").innerHTML = response.sum;
+
+         });
+
+	});
+</script>
+</html>

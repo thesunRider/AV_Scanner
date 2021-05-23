@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JVSOFT_MALWARE_DETECTOR</title>
+</head>
+
+
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="sweetalert.min.js"></script>
+<script type="text/javascript">
+
+
+            function togglescan() {
+                var change = document.getElementById("paus_scan");
+                if (change.innerHTML == "Pause Scan")
+                {
+                	document.getElementById("file_anim").style.background = "#ff3e6f";
+                    change.innerHTML = "Resume Scan";
+                    
+                     pywebview.api.pausescan();
+                }
+                else {
+                	document.getElementById("file_anim").style.background = "#2fbff2";
+                    change.innerHTML = "Pause Scan";
+                    pywebview.api.resumescan();
+                }
+            }
+
+</script>
+
+<style type="text/css">
+
+#current_page{
+	position: relative;
+	left: 500px;
+	top: -110px;
+
+	color: white;
+}
+
+#home {
+		position: relative;
+		top: 0px;
+		left: 10px;
+		overflow: visible;
+		width: 44px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Font Awesome 5 Free;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 48px;
+		color: rgba(255,255,255,1);
+	}
+
+#current_indx{
+	position: relative;
+	font-family: Nunito-Regular;
+	font-size: 25px;
+	top:10px;
+	left: -20px;
+}
+
+#logo_section{
+	position: relative;
+	top: 36.239px;
+}
+
+
+
+#content_section{
+	top: 100px;
+	position: relative;
+}
+
+#back_icn{
+	fill: white;
+	width: 200px;
+	height: 30px;
+}
+
+.overlay{
+  position:relative;
+  top:-80px;
+  left:0px;
+  height: 170px;
+}
+.wrap:before{
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em;
+}
+.wrap{
+  position:relative;
+  text-align:center;
+  color:black;
+  font-family:Arial;
+  height:100%;
+}
+.center{
+  display:inline-block;
+  vertical-align:middle;
+}
+.document-loader{
+  display:inline-block;
+  min-width:100px;
+  min-height:141px;
+  position:relative;
+  padding:5px;
+  border-radius:4px;
+  background: #2fbff2;
+  animation:slideInOut 3s ease infinite;
+}
+.document-loader:before{
+  display: block;
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-bottom-left-radius: 2px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #4c4c4c #4c4c4c rgba(255,255,255,.35) rgba(255,255,255,.35);
+  border-bottom-left-radius: 4px;
+  border-width: 16px;
+}
+.document-loader .heading{
+  display:block;
+  height:8px;
+  background:#333;
+  width:0px;
+  margin-bottom:5px;
+  margin-top:5px;
+  animation: growHeading 3s linear infinite;
+}
+.document-loader .heading.short{
+  animation: growHeadingShort 3s linear infinite;
+}
+.document-loader .heading:first-child{
+  margin-top:0px;
+}
+.document-loader .line{
+  display:block;
+  margin:3px 0 3px 0;
+  background:#eee;
+  height:4px;
+  width:0px;
+  animation: growLine 3s linear infinite;
+}
+.document-loader .line.short{
+  margin-bottom:6px;
+  animation: growLineShort 3s linear infinite;
+}
+.scanner_stat{
+color: white;
+font-family: Nunito-Regular;
+font-size: 20px;
+}
+
+@keyframes slideInOut{
+  0%{
+    transform:translateX(-100%);
+    opacity:0;
+  }
+  20%{
+    transform:translateX(-5%);
+    opacity:1;
+  }
+  80%{
+    transform:translateX(5%);
+    opacity:1;
+  }
+  100%{
+    transform:translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes growHeading{
+  0%{
+    width:0px;
+  }
+  60%{
+    width:0;
+  }
+  70%{
+    width:85px;
+  }
+  100%{
+    width:90px;
+  }
+}
+
+@keyframes growHeadingShort{
+  0%{
+    width:0px;
+  }
+  30%{
+    width:0;
+  }
+  40%{
+    width:45px;
+  }
+  100%{
+    width:65px;
+  }
+}
+
+@keyframes growLine{
+  0%{
+    width:0px;
+  }
+  60%{
+    width:0px;
+  }
+  80%{
+    width:85px;
+  }
+  100%{
+    width:100px;
+  }
+}
+
+@keyframes growLineShort{
+  0%{
+    width:0;
+  }
+  50%{
+    width:0;
+  }
+  60%{
+    width:70px;
+  }
+  100%{
+    width:75px;
+  }
+}
+
+</style>
+
+<body>
+	<header class="pywebview-drag-region">
+		<div id="back_btn" onclick="checkscan();">
+		<svg id="back_icn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
+				<path  d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"></path>
+			</svg>
+		Back to Dashboard</div>
+		<div id="close" class="close_container zoom_shrink"><div class="close_icon zoom_shrink"></div></div>
+		<div id="minimize" class="minimize_container" >-</div>
+</header>
+
+
+	<div id="dashboard">
+		<div id="logo_section">
+			<div id="guard_logo">
+				<svg class="Path_3" viewBox="3 1 63.854 78.761">
+					<path id="Path_3" d="M 34.92709732055664 1 L 2.999998807907104 15.32019424438477 L 2.999998807907104 36.80047607421875 C 2.999998807907104 56.66975784301758 16.62223243713379 75.25021362304688 34.92709732055664 79.76107788085938 C 53.23197174072266 75.25021362304688 66.85419464111328 56.66975784301758 66.85419464111328 36.80047607421875 L 66.85419464111328 15.32019424438477 L 34.92709732055664 1 Z M 27.83219146728516 58.28079223632813 L 13.64236545562744 43.96058654785156 L 18.64427947998047 38.9127082824707 L 27.83219146728516 48.14924240112305 L 51.20992279052734 24.55671501159668 L 56.21184158325195 29.640380859375 L 27.83219146728516 58.28079223632813 Z">
+					</path>
+				</svg>
+			</div>
+
+			<div id="guard_logo_writeup">
+				<span>JVSOFT<br>MALWARE DETECTOR</span>
+			</div>
+			<div id="current_page"> 
+				<span id="current_indx">Scan for Malware</span>
+				<svg id="search_btn" viewBox="6 6 50.004 54.704">
+					<path id="Path_5" d="M 41.73749160766602 40.40517425537109 L 39.4645881652832 40.40517425537109 L 38.67836761474609 39.54504776000977 C 41.48018264770508 35.99505996704102 43.16699600219727 31.38163375854492 43.16699600219727 26.33032989501953 C 43.16699600219727 15.10173034667969 34.84730529785156 6 24.58349800109863 6 C 14.31968879699707 6 6.000000953674316 15.10173034667969 6.000000953674316 26.33032989501953 C 6.000000953674316 37.55893325805664 14.31968879699707 46.66066360473633 24.58349800109863 46.66066360473633 C 29.20078277587891 46.66066360473633 33.41780853271484 44.81529235839844 36.66276931762695 41.76573944091797 L 37.44899749755859 42.62586975097656 L 37.44899749755859 45.0967903137207 L 51.74399185180664 60.70422744750977 L 56.00390625 56.04389572143555 L 41.73749160766602 40.40517425537109 Z M 24.58349800109863 40.40517425537109 C 17.47888565063477 40.40517425537109 11.7180004119873 34.10277557373047 11.7180004119873 26.33032989501953 C 11.7180004119873 18.55788993835449 17.47888565063477 12.25548648834229 24.58349800109863 12.25548648834229 C 31.68811416625977 12.25548648834229 37.44899749755859 18.55788993835449 37.44899749755859 26.33032989501953 C 37.44899749755859 34.10277557373047 31.68811416625977 40.40517425537109 24.58349800109863 40.40517425537109 Z">
+					</path>
+				</svg>
+			</div>
+		</div>
+
+		<div id="content_section">
+
+			<div class="overlay">
+			  <div class="wrap">
+			    <div class="center">
+			      <div id="file_anim" class="document-loader">
+			        <span class="heading short"></span>
+			        <span class="line short"></span>
+			        <span class="line"></span>
+			        <span class="line"></span>
+			        <span class="line"></span>
+			        <span class="line short"></span>
+			        <span class="line"></span>
+			        <span class="line"></span>
+			        <span class="line short"></span>
+			        <span class="heading"></span>
+			        <span class="line"></span>
+			        <span class="line"></span>
+			        <span class="line short"></span>
+			        <span class="line"></span>
+			        <span class="line"></span>
+			        <span class="line"></span>
+			        <span class="line"></span>
+			        <span class="line short"></span>
+			      </div>
+			      <p class="scanner_stat" id="display_scan_stat">
+			      	Preparing scan...
+			      	<br>Please Wait</p>  
+			    </div>
+			  </div>
+			</div>
+
+
+
+			<button id="term_scan" class="btn btn-1 btn-1a" onclick="checkscan()" type="button">Terminate Scan</button>
+			<button id="paus_scan" class="btn btn-1 btn-1a" onclick="togglescan()" type="button">Pause Scan</button>
+		</div>
+
+	</div>
+
+</body>
+
+<script type="text/javascript">
+	function checkscan(){
+		togglescan();
+		swal({
+      title: "Terminate Scan?",
+      text: "Are you sure you want to stop the scan?, Scan progress will be lost.",
+      icon: "warning",
+      buttons: [
+        'No, Dont do it!',
+        'Yes, I am sure!'
+      ],
+      dangerMode: true,
+    }).then(function(isConfirm) {
+      if (isConfirm) {
+		pywebview.api.stopscan();
+		location.href = "home.html"
+      };
+    })
+    togglescan();
+	}
+</script>
+<script type="text/javascript" src="script.js"></script>
+</html>
