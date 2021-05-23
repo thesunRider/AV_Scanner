@@ -19,6 +19,10 @@ Dependencies:
 	
 - Linux : From terminal run the installer.sh,afterwars launch the av_scanner program
 
+## Running from source 
+Run `python3 -m pip install -r requirements.txt` to install dependencies
+Then `python3 gui.py` will run the application
+
 ## Technologies Used
 ```
 	Python3 (main program core)
