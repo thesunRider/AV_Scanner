@@ -21,7 +21,7 @@ Dependencies:
 
 ## Running from source 
 Run `python3 -m pip install -r requirements.txt` to install dependencies.
-Then `python3 gui.py` will run the application
+Then `python3 av_scanner.py` will run the application
 
 ## Technologies Used
 ```
